@@ -8,6 +8,7 @@ A Discord bot that checks a pre-defined list of users last played game and shame
 
 !update
   - ** USE SPARINGLY ** runs index.js to check if any user has bottom fragged
+  
 !scoreboard
   - Sends current leaderboard
 

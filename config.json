@@ -1,14 +1,17 @@
 {
 
-    "token" : "",
+    "token" : "MTAwNTUyNTI0MjYwNjc4ODcwOA.G_oGzI.AnbiHFK6U317-2HR3wyFpnHSavbQgql7-nhSSQ",
     "usernames": [
-        {"user" : "dahanky", "tag" : "oce", "disc_id": "249497019532443648"},
-        {"user" : "gettzi", "tag" : "ape", "disc_id": "700976831750471770"},
-        {"user" : "tash", "tag" : "033", "disc_id": "692710249794240573"},
-        {"user" : "perry", "tag" : "duong", "disc_id": "333178846457102336"},
-        {"user" : "painfullytrue", "tag" : "keel", "disc_id": "360338395941306368"},
-        {"user" : "enkidraicor", "tag" : "oce", "disc_id": "345178611373834260"},
-        {"user" : "slowthai", "tag" : "ape", "disc_id": "198447603459948544"}
+        {"user" : "DaHanky", "tag" : "oce", "disc_id": "249497019532443648"},
+        {"user" : "GETTZI", "tag" : "ape", "disc_id": "700976831750471770"},
+        {"user" : "Tash", "tag" : "033", "disc_id": "692710249794240573"},
+        {"user" : "Perry", "tag" : "duong", "disc_id": "333178846457102336"},
+        {"user" : "PainfullyCringe", "tag" : "keel", "disc_id": "360338395941306368"},
+        {"user" : "EnkiDraicor", "tag" : "oce", "disc_id": "345178611373834260"},
+        {"user" : "maczemarco", "tag" : "ape", "disc_id": "198447603459948544"},
+	{"user": "Gooner", "tag": "2200", "disc_id": "257743505529634826"},
+	{"user": "0samaBlnIaden", "tag": "oce", "disc_id": "278818320805789697"}
+
     ],
     "messages": [
         "I’ve seen blind people aim better than you",
@@ -24,5 +27,5 @@
         "personally, i wouldn't of bottom fragged",
         "https://www.technewstoday.com/how-to-uninstall-valorant/"
     ],
-    "channelid": "865432456702590978"
+    "channelid": "342609340500410368"
 }

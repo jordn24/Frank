@@ -8,6 +8,11 @@ async function getLatestMatch(user, tag){
         .then( response => {
             return response.data.data[0].metadata.matchid
         })
+
+	.catch(error => 
+	{
+	    return "Failed"
+	})
 }
 
 async function getPositionInMatch(match_id, user){
@@ -25,11 +30,15 @@ async function getPositionInMatch(match_id, user){
             scores.sort((scoreA, scoreB) => (scoreA[1] > scoreB[1]) ? 1 : -1)
             
             let position = -1
-            if(scores[0][0].toLowerCase() === user) {
+            if(scores[0][0].toLowerCase() === user.toLowerCase()) {
                 position = 10
             }
 
             return position
+        })
+	.catch(error =>
+        {
+            return "Failed"
         })
 }
 

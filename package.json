@@ -7,7 +7,8 @@
   "description": "",
   "dependencies": {
     "axios": "^1.7.3",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.5.2"
   },
   "devDependencies": {
     "@types/node": "^22.2.0",
@@ -19,8 +20,8 @@
     "build": "tsc",
     "start": "node dist/index.ts",
     "dev": "ts-node index.ts",
-    "commands": "ts-node commands/add-guild.ts",
-    "list": "ts-node commands/list-commands.ts",
-    "delete-all": "ts-node commands/delete-all.ts"
+    "commands": "ts-node utils/add-guild.ts",
+    "list": "ts-node utils/list-commands.ts",
+    "delete-all": "ts-node utils/delete-all.ts"
   }
 }

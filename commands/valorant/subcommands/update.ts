@@ -32,61 +32,62 @@ export default async function update(client: Client) {
             console.log("\nStarting for: " + user.user);
             
             let bottomFragged: false | string = await didBottomFrag(user.user, user.tag);
-            let formatted_msg;
+            let formatted_msg: string;
 
-            if(bottomFragged){
+            // If already checked then do nothing
+            if (bottomFragged === user.latestMatch){
+                console.log("Latest match already checked.");
+            } else {
 
-                // If already checked then do nothing
-                if (bottomFragged === user.latestMatch){
-                    console.log("Latest match already checked.");
-                } else {
+                let score = parseInt(user.bottomFrags);
+
+                if (bottomFragged) {
                     // Send message in general
                     formatted_msg = "<@" + user.discId + "> " + messages[Math.floor(Math.random() * messages.length)]
 
-                    // Send to channel id in config
-                    const channel = await client.channels.fetch(channelId) as TextChannel;
-                    if(channel) {
-                        channel.send(formatted_msg);
-                        console.log("Sent Message!");
-                    } else {
-                        console.log("Couldn't send to channel.");
-                    }
-
-                    try {
-                        // Call Act Matches APIs
-                        const newActMatches = await APIHandler.get(process.env.WEB_TRACKER_API! + process.env.WEB_TRACKER_ACT_URI! + "?user=" +
-                            user.user.replace(" ", "%20") + "&tag=" + user.tag, "tracker-api", "tracker-api-password");
-                        
-                        // Calculate new percentage
-                        let newPercentage = 0;
-                        let newScore = parseInt(user.bottomFrags) + 1
-
-                        if(newActMatches.data > 0){
-                            newPercentage =  newScore / newActMatches.data * 100
+                    setTimeout( async () => {
+                         // Send to channel id in config
+                        const channel = await client.channels.fetch(channelId) as TextChannel;
+                        if(channel) {
+                            channel.send(formatted_msg);
+                            console.log("Sent Message!");
+                        } else {
+                            console.log("Couldn't send to channel.");
                         }
-                                
-                        console.log("New Act Matches: " + newActMatches.data)
-                        console.log("New Percentage: " + newPercentage)
-                        console.log("New Score: " + newScore)
-                        console.log("Pre run: " + user.bottomFrags)
-
-                        // Update Scores
-                        await dbHandler.updateUser(user._id, "bottomFrags", newScore.toString());
-                        // Update Matches
-                        await dbHandler.updateUser(user._id, "matches", newActMatches.data.toString());
-                        // Update Percentage
-                        await dbHandler.updateUser(user._id, "percentage", newPercentage.toString());
-                        // Update latest match id
-                        await dbHandler.updateUser(user._id.toString(), "latestMatch", bottomFragged);
-
-                    } catch (e) {
-                        console.log(e);
-                    }
+                    }, 60 * 1000);
+                
+                    // Update latest match id
+                    await dbHandler.updateUser(user._id.toString(), "latestMatch", bottomFragged);
+                                                
+                    // Update Scores
+                    score =+ 1;
+                    await dbHandler.updateUser(user._id, "bottomFrags", score.toString());
+                    
+                } else {
+                    console.log("Not bottom.")
                 }
 
-            } else {
-                console.log("Not bottom.")
-            }
+                // Update Matches
+                try {
+                    // Call Act Matches APIs
+                    const newActMatches = await APIHandler.get(process.env.WEB_TRACKER_API! + process.env.WEB_TRACKER_ACT_URI! + "?user=" +
+                        user.user.replace(" ", "%20") + "&tag=" + user.tag, "tracker-api", "tracker-api-password");
+                    
+                    // Calculate new percentage
+                    let newPercentage = 0;
+
+                    if(newActMatches.data > 0){
+                        newPercentage =  score / newActMatches.data * 100
+                    }
+                    // Update Matches
+                    await dbHandler.updateUser(user._id, "matches", newActMatches.data.toString());
+                    // Update Percentage
+                    await dbHandler.updateUser(user._id, "percentage", newPercentage.toString());
+
+                } catch (e) {
+                    console.log(e);
+                }
+            }         
         }
     } catch (error) {
         console.log("Error Occured: ", error);

@@ -55,7 +55,7 @@ export const execute = async (client: Client, interaction: any) => {
         
         interaction.reply(
             { 
-                content: "Running update, wait a few seconds.",
+                content: "Running update, wait a minute.",
                 ephemeral: true
             });    
         // Execute the command logic

@@ -18,11 +18,19 @@ export default async function didBottomFrag(user: string, tag: string) {
             }
         })
 
-        let players = response.data.data[0].players.all_players;
+        let index = 0;
+        while(index < response.data.data.length){
+            if(response.data.data[index].is_available){
+                break;
+            }
+            index = index + 1;
+        }
+        
+        let players = response.data.data[index].players.all_players;
     
         let sortedPlayers = players.sort((scoreA: PlayerObject, scoreB: PlayerObject) => (scoreA.stats.score > scoreB.stats.score ? 1 : -1));
     
-        if(sortedPlayers[0].name.toLowerCase() === user.toLowerCase()) {return true}
+        if(sortedPlayers[0].name.toLowerCase() === user.toLowerCase()) {return response.data.data[index].metadata.matchid}
     
         return false;   
     } catch (error) {

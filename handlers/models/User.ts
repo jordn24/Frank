@@ -9,7 +9,8 @@ const UserSchema = new Schema ({
   allTimeMatches: {type : String, required: true},
   allTimePercentage: {type: String, required: true},
   percentage: {type: String, required: true},
-  discId: {type: String, required: true}
+  discId: {type: String, required: true},
+  latestMatch: {type: String, required: true}
 });
 
 const User = mongoose.model('User', UserSchema);

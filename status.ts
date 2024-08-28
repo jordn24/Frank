@@ -33,5 +33,21 @@ export const statuses: Status[] = [
   {
     name: 'you be hard stuck in gold',
     type: ActivityType.Watching
+  },
+  {
+    name: 'to you being a little baby',
+    type: ActivityType.Listening
+  },
+  {
+    name: 'Among Us',
+    type: ActivityType.Playing
+  },
+  {
+    name: 'Fortnite',
+    type: ActivityType.Playing
+  },
+  {
+    name: 'Roblox',
+    type: ActivityType.Playing
   }
 ];

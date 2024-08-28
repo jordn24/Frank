@@ -63,14 +63,14 @@ export default async function scoreboard(client: Client, interaction: CommandInt
     users.forEach((user) => {
         actFields.push({
             name: user.user + ":",
-            value: `Has bottom fragged ${user.bottomFrags} times.`,
+            value: `Bottom fragged ${user.bottomFrags} time/s with a rate of ${parseFloat(user.percentage).toFixed(2)}%`,
             raw_value: parseInt(user.bottomFrags),
             rawPercentage: parseFloat(user.percentage),
         });
 
         allTimeFields.push({
             name: user.user + ":",
-            value: `Has bottom fragged ${user.allTimeBottomFrags} times.`,
+            value: `Bottom fragged ${user.allTimeBottomFrags} time/s with a rate of ${parseFloat(user.allTimePercentage).toFixed(2)}%`,
             raw_value: parseInt(user.allTimeBottomFrags),
             rawPercentage: parseFloat(user.allTimePercentage),
         });

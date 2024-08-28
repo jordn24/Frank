@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from 'mongoose';
+import mongoose, { Mongoose, ObjectId } from 'mongoose';
 import User from './models/User';
 import 'dotenv/config'
 
@@ -35,7 +35,7 @@ class DatabaseHandler {
     }
   }
   
-  async updateUser(userId: string, fieldName: string, updatedValue: string) {
+  async updateUser(userId: any, fieldName: string, updatedValue: string) {
     try {
       const update = { [fieldName]: updatedValue };
       const user = await User.findByIdAndUpdate(userId, update, { new: true }).exec();

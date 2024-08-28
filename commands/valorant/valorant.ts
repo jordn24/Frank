@@ -36,7 +36,7 @@ export const execute = async (client: Client, interaction: any) => {
 
     if(subcommand === "update"){
         const commandName = "update";
-        const cooldownAmount = 60 * 1000; // Cooldown time in milliseconds (e.g., 5 seconds)
+        const cooldownAmount = 300 * 1000; // Cooldown time in milliseconds (e.g., 5 seconds)
     
         if (cooldowns.has(commandName)) {
             const expirationTime = cooldowns.get(commandName) + cooldownAmount;
@@ -52,15 +52,16 @@ export const execute = async (client: Client, interaction: any) => {
     
         // Set the cooldown
         cooldowns.set(commandName, Date.now());
-    
-        // Execute the command logic
-        update().then(() => {
-            interaction.reply({
-                content: "Updated.",
+        
+        interaction.reply(
+            { 
+                content: "Running update, wait a few seconds.",
                 ephemeral: true
-            });
-        });
-    
+            });    
+        // Execute the command logic
+        update(client);
+
+
         // Remove the command from the cooldown map after the cooldown period
         setTimeout(() => cooldowns.delete(commandName), cooldownAmount);
     }

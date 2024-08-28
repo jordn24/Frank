@@ -1,24 +1,27 @@
 {
-  "name": "clear",
+  "name": "valorantshamingbot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jordn24/valorantShamingBot.git"
-  },
+  "main": "index.ts",
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jordn24/valorantShamingBot/issues"
-  },
-  "homepage": "https://github.com/jordn24/valorantShamingBot#readme",
+  "description": "",
   "dependencies": {
-    "axios": "^0.21.1",
-    "discord.js": "^12.5.3",
-    "forever": "^4.0.3"
+    "axios": "^1.7.3",
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "discord.js": "^14.15.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.ts",
+    "dev": "ts-node index.ts",
+    "commands": "ts-node utils/add-guild.ts",
+    "list": "ts-node utils/list-commands.ts",
+    "delete-all": "ts-node utils/delete-all.ts"
   }
 }

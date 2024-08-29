@@ -55,11 +55,12 @@ export const execute = async (client: Client, interaction: any) => {
         
         interaction.reply(
             { 
-                content: "Running update, wait a minute.",
+                // content: "Running update, wait a minute.",
+                content: "Wait idiot",
                 ephemeral: true
             });    
         // Execute the command logic
-        update(client);
+        // update(client);
 
 
         // Remove the command from the cooldown map after the cooldown period
